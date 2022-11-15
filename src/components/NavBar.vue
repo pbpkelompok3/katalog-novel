@@ -8,12 +8,10 @@
         <div class="logo">
             <v-icon class="logo-bg" size="440%" color="#EED9C4">circle</v-icon>
             <img src="../assets/open_book_icon.png" class="logo-pic">
-            <h2 class="logo-text">NOVELL</h2>
+            <h2 class="logo-text">NOVELLL</h2>
         </div>
 
-        <div class="genre">
-            Genre
-        </div>
+        <h2 class="genre">Genre</h2>
 
         <div class="search-bar">
             <input type="text" placeholder="Search..">
