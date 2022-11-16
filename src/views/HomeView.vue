@@ -1,23 +1,26 @@
 <template>
   <v-app>
     <NavBar class="index" />
+    <FilTer />
     <DashBoard />
-    <FootEr />
+    <FooTer />
   </v-app>
 </template>
 
 <script>
 // @ is an alias to /src
 import NavBar from '@/components/NavBar.vue'
-import FootEr from '@/components/FootEr.vue'
+import FooTer from '@/components/FootEr.vue'
 import DashBoard from '@/components/DashBoard.vue'
+import FilTer from '@/components/FilTer.vue'
 
 export default {
   name: 'HomeView',
   components: {
     NavBar,
-    FootEr,
+    FooTer,
     DashBoard,
+    FilTer,
   },
 }
 </script>
