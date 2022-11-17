@@ -4,6 +4,7 @@
     elevation="7"
     dark
     height="80px"
+    class="navbar"
     >
         <div class="logo">
             <v-icon class="logo-bg" size="440%" color="#EED9C4">circle</v-icon>
@@ -99,5 +100,8 @@ export default {
     }
     .search-pic:hover {
         cursor: pointer;
+    }
+    .navbar {
+        z-index: 10;
     }
 </style>

@@ -19,7 +19,7 @@
         <v-card flat tile class="mx-16 card1" color="white">
             <v-row>
                 <v-col cols="12" sm="6" class="pr-0">
-                    <v-card height="250px" tile elevation="3" color="rgb(103, 85, 125, 0.7)" class="rounded-lg">
+                    <v-card height="250px" tile elevation="3" color="rgb(103, 85, 125, 0.8)">
                         <v-row>
                             <v-col cols="12" sm="6" class="pl-8 pt-4">
                                 <v-btn color="black" dark class="withoutupercase" small tile>new addition !</v-btn>
@@ -34,7 +34,7 @@
                     </v-card>
                 </v-col>
                 <v-col cols="12" sm="6" class="pl-0">
-                    <v-card height="250px" tile elevation="3" color="rgb(199, 174, 149, 0.7)" class="rounded-lg">
+                    <v-card height="250px" tile elevation="3" color="rgb(199, 174, 149, 0.8)">
                         <v-row>
                             <v-col cols="12" sm="6" class="pl-8 pt-4">
                                 <v-btn color="black" dark class="withoutupercase" small tile>new addition !</v-btn>
@@ -98,22 +98,63 @@
                 </v-toolbar>
             </v-col> -->
             <v-col cols="3" class="py-0 pr-0 mt-n3">
-                <v-card flat outlined tile>
+                <v-card>
                     <v-toolbar flat>
                         <strong>Genre</strong>
                         <v-spacer></v-spacer>
                         <v-icon color="black" class="mr-2">mdi-chevron-down</v-icon>
                     </v-toolbar>
                     <v-list dense class="mt-n5">
-                        <v-list-item v-for="book in books" :key="book.title">
+                        <v-list-item v-for="genre in books" :key="genre.title">
                             <v-list-item-content>
-                                <v-list-item-title v-text="book.title" class="text-left ml-3"></v-list-item-title>
+                                <v-list-item-title v-text="genre.title" class="text-left ml-4"></v-list-item-title>
                             </v-list-item-content>
                             <v-list-item-action>
-                                <v-list-item-subtitle v-text="book.count" class="text-right mr-3"></v-list-item-subtitle>
+                                <v-checkbox color="primary" v-model="genre.state" class="pr-3"></v-checkbox>
                             </v-list-item-action>
                         </v-list-item>
                     </v-list>
+                </v-card>
+                <v-card flat outlined tile>
+                    <v-toolbar flat>
+                        <strong>Tahun Terbit</strong>
+                        <v-spacer></v-spacer>
+                        <v-icon color="black" class="mr-2">mdi-chevron-down</v-icon>
+                    </v-toolbar>
+                    <v-toolbar flat>
+                        <v-range-slider 
+                    v-model="range"
+                    :max="max"
+                    :min="min"
+                    hide-details
+                    class="align-center">
+                        <template v-slot:prepend>
+                            <v-text-field
+                              :value="range[0]"
+                              class="mt-0 pt-0"
+                              hide-details
+                              single-line
+                              type="number"
+                              style="width: 60px"
+                              @change="$set(range, 0, $event)"
+                            ></v-text-field>
+                          </template>
+                          <template v-slot:append>
+                            <v-text-field
+                              :value="range[1]"
+                              class="mt-0 pt-0"
+                              hide-details
+                              single-line
+                              type="number"
+                              style="width: 60px"
+                              @change="$set(range, 1, $event)"
+                            ></v-text-field>
+                          </template>
+                    </v-range-slider>
+                        <!-- <v-text-field placeholder="2005" filled rounded dense class="mx-2" color="black"></v-text-field>
+                        <v-text-field placeholder="2022" filled rounded dense class="mx-2"></v-text-field> -->
+                    </v-toolbar>
+                    
                 </v-card>
             </v-col>
         </v-row>
@@ -152,16 +193,22 @@ export default {
                 {
                     title: 'Sci-fi',
                     count: '20',
+                    state: false,
                 },
                 {
                     title: 'Fantasy',
                     count: '10',
+                    state: false,
                 },
                 {
                     title: 'Romance',
                     count: '33', 
+                    state: false,
                 }
-            ]
+            ],
+            min: 2005,
+            max: 2022,
+            range: [1900, 2022],
         }
     },
 }
@@ -200,7 +247,7 @@ export default {
     widows: 100%;
 }
 .card1 {
-    z-index: 10;
+    z-index: 3;
 }
 .card2 {
     z-index: 1;
@@ -221,6 +268,9 @@ export default {
 .new {
     display: flex;
     right: 0;
+}
+.rounded-lg {
+    border-color: transparent !important;
 }
 
 </style>

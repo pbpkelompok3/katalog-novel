@@ -1,10 +1,11 @@
 <template>
   <v-app>
-    <NavBar class="index" />
-    <DashBoard />
+    <NavBar class="index"/>
+    <DashBoard/>
     <!-- <FooTer /> -->
   </v-app>
 </template>
+
 
 <script>
 // @ is an alias to /src
@@ -21,3 +22,8 @@ export default {
   },
 }
 </script>
+
+
+<style lang="scss">
+
+</style>
