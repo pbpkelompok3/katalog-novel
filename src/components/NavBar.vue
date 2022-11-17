@@ -13,7 +13,7 @@
         </div>
 
 
-        <div class="search-bar">
+        <div class="searchBar">
             <input type="text" placeholder="Search..">
             <v-icon class="search-pic" color="#000">mdi-magnify</v-icon>
         </div>
@@ -73,7 +73,7 @@ export default {
         top: 1px;
     }
 
-    .search-bar {
+    .searchBar {
         position: absolute;
         right: 30px;
         background-color: #ffffff;

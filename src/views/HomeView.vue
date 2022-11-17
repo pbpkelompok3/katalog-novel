@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <NavBar class="index"/>
+    <NavBar/>
     <DashBoard/>
-    <FooTer />
+    <FooTer/>
   </v-app>
 </template>
 
@@ -10,7 +10,7 @@
 <script>
 // @ is an alias to /src
 import NavBar from '@/components/NavBar.vue'
-import FooTer from '@/components/FootEr.vue'
+import FooTer from '@/components/FooTer.vue'
 import DashBoard from '@/components/DashBoard.vue'
 
 export default {

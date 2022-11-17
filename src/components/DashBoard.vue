@@ -1,38 +1,8 @@
 <template>
-    <v-container fluid>
+    <v-container fluid class="mb-16">
         <BreadCrumb/>
         <v-card flat tile class="mx-16 card1" color="white">
-            <v-row>
-                <v-col cols="12" sm="6" class="pr-0">
-                    <v-card height="250px" tile elevation="3" color="rgb(103, 85, 125, 0.8)">
-                        <v-row>
-                            <v-col cols="12" sm="6" class="pl-8 pt-4">
-                                <v-btn color="black" dark class="withoutupercase" small tile>new addition !</v-btn>
-                                <h5 class="white--text mt-15 ml-2 text-left authornames">Andrea Hirata</h5>
-                                <h3 class="white--text mt-4 ml-2 text-left">Laskar Pelangi</h3>
-                            </v-col>
-                            <v-col cols="12" sm="6">
-                                <v-img src="../assets/Laskar Pelangi.jpg" max-height="220" contain class="mt-1 new"></v-img>
-                            </v-col>
-                        </v-row>
-                    </v-card>
-                </v-col>
-                <v-col cols="12" sm="6" class="pl-0">
-                    <v-card height="250px" tile elevation="3" color="rgb(199, 174, 149, 0.8)">
-                        <v-row>
-                            <v-col cols="12" sm="6" class="pl-8 pt-4">
-                                <v-btn color="black" dark class="withoutupercase" small tile>new addition !</v-btn>
-                                <h5 class="white--text mt-15 ml-2 text-left authornames">Tere Liye</h5>
-                                <h3 class="white--text mt-4 ml-2 text-left">Bumi</h3>
-                                <!-- <v-btn rounded color="#8375E7" dark class="withoutupercase px-8 mt-10 ml-0" elevation="5">More Info</v-btn> -->
-                            </v-col>
-                            <v-col cols="12" sm="6">
-                                <v-img src="../assets/Bumi.jpg" max-height="220" contain class="mt-1"></v-img>
-                            </v-col>
-                        </v-row>
-                    </v-card>
-                </v-col>
-            </v-row>
+            <NewAddition/>
             <v-row flat class="transparent">
                 <v-col></v-col>
             </v-row>
@@ -40,14 +10,13 @@
                 <v-col></v-col>
             </v-row>
 
-            <!-- FILTER BAR ------------------------->
+            <!-- FILTER BAR ---------------------------------------------------------------------------->
             <v-row>
-                <v-col cols="12" sm="4" class="mt-n6 pr-0">
-                    <h2 class="filter jost">Filter</h2>
+                <v-col cols="12" sm="4" class="mt-n6 pr-0" align="left">
+                    <h2 class="ml-2 mt-1 jost">Filter</h2>
                 </v-col>
-                <v-col cols="12" sm="6" class="mt-n6 pr-0">
-                    <!-- <h4 class="text-right">Urutkan</h4> -->
-                    <v-select :items="sorting" label="Urutkan" dense outlined read-only class="sorting"></v-select>
+                <v-col cols="12" sm="8" class="mt-n6 mx-0" align="right">
+                    <v-select :items="sorting" label="Urutkan" dense outlined read-only class="mt-0 sorting"></v-select>
                 </v-col>
                 <v-col cols="3" class="py-0 pr-0 mt-0">
                     <v-card>
@@ -105,59 +74,19 @@
                             </v-expansion-panel>
                         </v-expansion-panels>
                     </v-card>
-                    <!-- <v-card>
-                        <v-expansion-panels>
-                            <v-expansion-panel>
-                                <v-expansion-panel-header><strong>Tahun Terbit</strong></v-expansion-panel-header>
-                                <v-expansion-panel-content>
-                                    <v-toolbar flat>
-                                        <v-range-slider 
-                                            v-model="range"
-                                            :max="max"
-                                            :min="min"
-                                            hide-details
-                                            class="align-center"
-                                        >
-                                            <template v-slot:prepend>
-                                                <v-text-field
-                                                    :value="range[0]"
-                                                    class="mt-0 pt-0"
-                                                    hide-details
-                                                    single-line
-                                                    type="number"
-                                                    style="width: 60px"
-                                                    @change="$set(range, 0, $event)"
-                                                ></v-text-field>
-                                            </template>
-                                            <template v-slot:append>
-                                                <v-text-field
-                                                    :value="range[1]"
-                                                    class="mt-0 pt-0"
-                                                    hide-details
-                                                    single-line
-                                                    type="number"
-                                                    style="width: 60px"
-                                                    @change="$set(range, 1, $event)"
-                                                ></v-text-field>
-                                            </template>
-                                        </v-range-slider>
-                                    </v-toolbar>
-                                </v-expansion-panel-content>
-                            </v-expansion-panel>
-                        </v-expansion-panels>
-                    </v-card> -->
                 </v-col>
 
+                <!-- Katalog ----------------------------------------------------------------------------->
                 <v-col cols="9" class="mt-n3 katalog">
                     <v-row>
                         <v-col cols="12" sm="2" v-for="(book, idx) in books" :key="idx" class="">
                             <v-hover v-slot:default="{hover}" flat>
                                 <v-card height="300" align="center" flat outlined tile class="rounded-lg">
-                                    <v-img :src="book.image" max-height="170" contain class="px-2 mt-2"></v-img>
+                                    <v-img :src="book.image" max-height="170" contain class="px-2 mt-2 pointer"></v-img>
                                     
                                     <v-card-text class="px-3 text-left">
-                                        <strong :class="hover ? 'purple--text' : 'black--text'" class="books_title">{{book.title}}</strong>
-                                        <div :class="hover ? 'purple--text' : 'black--text'" class="books_title">{{book.author}}</div>
+                                        <strong :class="hover ? 'purple--text' : 'black--text'" class="pointer">{{book.title}}</strong>
+                                        <div :class="hover ? 'purple--text' : 'black--text'" class="pointer">{{book.author}}</div>
                                     </v-card-text>
                                     <!-- <v-expand-transition>
                                         <div v-if="hover" class="d-flex transition-fast-in-fast-out transparent v-card--reveal display-3 white--text" style="height: 100%;">
@@ -174,7 +103,21 @@
                         </v-col>
                     </v-row>
                 </v-col>
-        </v-row>
+                
+                <v-col cols="12" sm="12" class="mt-n3 px-0 pb-0">
+                    <v-pagination 
+                        v-model="pageCurrent"
+                        :length="pageLength"
+                        total-visible="6"
+                        dark
+                        circle
+                        color="purple"
+                        prev-icon="mdi-menu-left"
+                        next-icon="mdi-menu-right"
+                        align="center">
+                    </v-pagination>
+                </v-col>
+            </v-row>
         </v-card>
     </v-container>
 </template>
@@ -182,6 +125,7 @@
 
 <script>
 import BreadCrumb from '@/components/BreadCrumb.vue'
+import NewAddition from '@/components/NewAddition.vue'
 
 export default {
     data() {
@@ -203,69 +147,86 @@ export default {
                     state: false,
                 }
             ],
-
-            sorting: ['Paling Relevan', 'Terbaru', 'Terlama', 'Terpopuler'],
-
-            books: [
-                {
-                    sold: '-20%',
-                    image: require("../assets/Lumpu.jpg"),
-                    title: 'Lumpu',
-                    author: 'Nama Author',
-                    price: 'Rp 48,000'
-                },
-                {
-                    sold: '-30%',
-                    image: require("../assets/Nebula.jpg"),
-                    title: 'Nebula',
-                    author: 'Nama Author',
-                    price: 'Rp 48,000'
-                },
-                {
-                    sold: '-20%',
-                    image: require("../assets/Si Putih.jpg"),
-                    title: 'Si Putih',
-                    author: 'Nama Author',
-                    price: 'Rp 48,000'
-                },
-                {
-                    sold: '-20%',
-                    image: require("../assets/Anak Rantau.jpg"),
-                    title: 'Anak Rantau',
-                    author: 'Nama Author',
-                    price: 'Rp 48,000'
-                },
-                {
-                    sold: '-20%',
-                    image: require("../assets/Laut Bercerita.jpg"),
-                    title: 'Laut Bercerita',
-                    author: 'Nama Author',
-                    price: 'Rp 48,000'
-                },
-                {
-                    sold: '-20%',
-                    image: require("../assets/The Murder Of Roger Ackroyd.jpg"),
-                    title: 'The Murder Of Roger Ackroyd',
-                    author: 'Nama Author',
-                    price: 'Rp 48,000'
-                },
-                {
-                    sold: '-20%',
-                    image: require("../assets/About Me.jpg"),
-                    title: 'About Me',
-                    author: 'Nama Author',
-                    price: 'Rp 48,000'
-                },
-            ],
             min: 1990,
             max: 2022,
             range: [2005, 2022],
-            books_title: "hover ? 'purple--text' : 'black--text'"
+            sorting: ['Paling Relevan', 'Terbaru', 'Terlama', 'Terpopuler'],
+            pageCurrent: 1,
+            pageLength: 10,
+
+            books: [
+                {
+                    image: require("../assets/Lumpu.jpg"),
+                    title: 'Lumpu',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/Nebula.jpg"),
+                    title: 'Nebula',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/Si Putih.jpg"),
+                    title: 'Si Putih',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/Anak Rantau.jpg"),
+                    title: 'Anak Rantau',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/Laut Bercerita.jpg"),
+                    title: 'Laut Bercerita',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/The Murder Of Roger Ackroyd.jpg"),
+                    title: 'The Murder Of Roger Ackroyd',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/About Me.jpg"),
+                    title: 'About Me',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/About Me.jpg"),
+                    title: 'About Me',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/About Me.jpg"),
+                    title: 'About Me',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/About Me.jpg"),
+                    title: 'About Me',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/About Me.jpg"),
+                    title: 'About Me',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/Sagaras.jpeg"),
+                    title: 'Sagaras',
+                    author: 'Nama Author',
+                },
+                {
+                    image: require("../assets/Selena.jpg"),
+                    title: 'Selena',
+                    author: 'Nama Author',
+                },
+            ],
         }
     },
 
     components: {
         BreadCrumb,
+        NewAddition,
     }
 }
 </script>
@@ -279,11 +240,8 @@ export default {
 .authornames {
     font-weight: 300;
 }
+
 .sorting {
-    display: flex;
-    position: absolute;
-    top: 280px;
-    right: 0;
     width: 250px;
 }
 
@@ -312,7 +270,7 @@ export default {
 .card2 {
     z-index: 1;
 }
-.books_title {
+.pointer {
     cursor: pointer;
 }
 
@@ -324,11 +282,7 @@ export default {
     border: none !important;
     border-color: transparent !important;
 }
-.filter {
-    display: flex;
-    margin: -10px 0 0 10px;
-    margin-bottom: 5px;
-}
+
 .new {
     display: flex;
     right: 0;
