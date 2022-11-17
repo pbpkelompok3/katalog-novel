@@ -15,7 +15,7 @@
 
         <div class="searchBar">
             <input type="text" placeholder="Search..">
-            <v-icon class="search-pic" color="#000">mdi-magnify</v-icon>
+            <v-icon class="search-pic" color="#67557D">mdi-magnify</v-icon>
         </div>
         
     </v-app-bar>
