@@ -9,10 +9,10 @@
         <div class="logo">
             <v-icon class="logo-bg" size="440%" color="#EED9C4">circle</v-icon>
             <img src="../assets/open_book_icon.png" class="logo-pic">
-            <h2 class="logo-text">NOVELLL</h2>
+            <h2 class="logo-text">NOVELOG</h2>
+            <h4>Novel Catalogue</h4>
         </div>
 
-        <h2 class="genre">Genre</h2>
 
         <div class="search-bar">
             <input type="text" placeholder="Search..">
@@ -66,21 +66,21 @@ export default {
         font-weight: 500;
         color: #fff;
         font: 28px 'Croissant One';
-        margin: 16px 0 0 65px;
+        margin: 3px 0 0 65px;
     }
-
-    .genre {
+    .logo h4 {
+        display: grid;
         position: absolute;
-        font: 22px 'Jost';
-        color: #FFF9F3;
-        right: 290px;
-        top: 22px;
+        font-family: 'Courier New';
+        margin: 43px 0 0 66px;
+        font-size: 15px;
+        font-weight: 300;
     }
 
     .search-bar {
         position: absolute;
         right: 30px;
-        background-color: #FAF0E6;
+        background-color: #ffffff;
         border-radius: 20px;
         height: 35px;
         line-height: 35px;

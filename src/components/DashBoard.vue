@@ -1,21 +1,6 @@
 <template>
     <v-container fluid>
-        <div class="breadcrumb">
-            <v-row>
-                <v-col cols="12" sm="12">
-                    <br>
-                    <h4 class="text-center">Novels</h4>
-                </v-col>
-                <v-col cols="12" sm="12">
-                    <v-breadcrumbs :items="items" class="justify-center mt-n7" dark>
-                        <template v-slot:divider>
-                            <v-icon color="#67557D">mdi-chevron-right</v-icon>
-                        </template>
-                    </v-breadcrumbs>
-                </v-col>
-            </v-row>
-        </div>
-        
+        <BreadCrumb/>
         <v-card flat tile class="mx-16 card1" color="white">
             <v-row>
                 <v-col cols="12" sm="6" class="pr-0">
@@ -55,48 +40,12 @@
             <v-row flat class="transparent">
                 <v-col></v-col>
             </v-row>
+
+            <!-- FILTER BAR ------------------------->
             <v-row>
                 <v-col cols="12" sm="12" class="mt-n6 pr-0">
                     <h2 class="filter jost">Filter</h2>
-                    <!-- <v-toolbar>
-                        <v-toolbar-title><strong>Filter</strong></v-toolbar-title>
-                        <v-divider vertical></v-divider>
-                        <v-spacer></v-spacer>
-                        <v-divider vertical></v-divider>
-                        <v-btn icon class="ml-1">
-                            <v-icon color="#67557D">mdi-sync</v-icon>
-                        </v-btn>
-                </v-toolbar> -->
             </v-col>
-            <!-- <v-col cols="12" sm="3" class="mt-n6 px-0">
-                <v-toolbar flat outlined>
-                    <v-toolbar-title>Short by: <span>Judul</span></v-toolbar-title>
-                </v-toolbar>
-            </v-col> -->
-            <!-- <v-col cols="12" sm="6" class="mt-n6 px-0">
-                <v-toolbar flat outlined class="">
-                    <v-toolbar-title>SHOW: <span>12</span></v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <v-btn icon class="mr-4">
-                        <v-icon color="black">mdi-menu-down</v-icon>
-                    </v-btn>
-                </v-toolbar>
-            </v-col> -->
-            <!-- <v-col cols="12" sm="3" class="mt-n6 pl-0">
-                <v-toolbar flat outlined>
-                    <v-btn icon class="mr-1">
-                        <v-icon color="#3853D8">mdi-apps</v-icon>
-                    </v-btn>
-                    <v-divider vertical></v-divider>
-                    <v-btn icon class="mx-1">
-                        <v-icon color="grey">mdi-format-list-bulleted</v-icon>
-                    </v-btn>
-                    <v-divider vertical></v-divider>
-                    <v-toolbar-title class="ml-2"><strong>COMPARE :</strong></v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <v-badge color="#3853D8" content="3" class="mr-2"></v-badge>
-                </v-toolbar>
-            </v-col> -->
             <v-col cols="3" class="py-0 pr-0 mt-n3">
                 <v-card>
                     <v-toolbar flat>
@@ -105,7 +54,7 @@
                         <v-icon color="black" class="mr-2">mdi-chevron-down</v-icon>
                     </v-toolbar>
                     <v-list dense class="mt-n5">
-                        <v-list-item v-for="genre in books" :key="genre.title">
+                        <v-list-item v-for="genre in genres" :key="genre.title">
                             <v-list-item-content>
                                 <v-list-item-title v-text="genre.title" class="text-left ml-4"></v-list-item-title>
                             </v-list-item-content>
@@ -123,39 +72,64 @@
                     </v-toolbar>
                     <v-toolbar flat>
                         <v-range-slider 
-                    v-model="range"
-                    :max="max"
-                    :min="min"
-                    hide-details
-                    class="align-center">
-                        <template v-slot:prepend>
-                            <v-text-field
-                              :value="range[0]"
-                              class="mt-0 pt-0"
-                              hide-details
-                              single-line
-                              type="number"
-                              style="width: 60px"
-                              @change="$set(range, 0, $event)"
-                            ></v-text-field>
-                          </template>
-                          <template v-slot:append>
-                            <v-text-field
-                              :value="range[1]"
-                              class="mt-0 pt-0"
-                              hide-details
-                              single-line
-                              type="number"
-                              style="width: 60px"
-                              @change="$set(range, 1, $event)"
-                            ></v-text-field>
-                          </template>
-                    </v-range-slider>
-                        <!-- <v-text-field placeholder="2005" filled rounded dense class="mx-2" color="black"></v-text-field>
-                        <v-text-field placeholder="2022" filled rounded dense class="mx-2"></v-text-field> -->
+                            v-model="range"
+                            :max="max"
+                            :min="min"
+                            hide-details
+                            class="align-center"
+                        >
+                            <template v-slot:prepend>
+                                <v-text-field
+                                    :value="range[0]"
+                                    class="mt-0 pt-0"
+                                    hide-details
+                                    single-line
+                                    type="number"
+                                    style="width: 60px"
+                                    @change="$set(range, 0, $event)"
+                                ></v-text-field>
+                            </template>
+                            <template v-slot:append>
+                                <v-text-field
+                                    :value="range[1]"
+                                    class="mt-0 pt-0"
+                                    hide-details
+                                    single-line
+                                    type="number"
+                                    style="width: 60px"
+                                    @change="$set(range, 1, $event)"
+                                ></v-text-field>
+                            </template>
+                        </v-range-slider>
                     </v-toolbar>
-                    
                 </v-card>
+            </v-col>
+
+            <v-col cols="9" class="mt-n3 katalog">
+                <v-row>
+                    <v-col cols="12" sm="2" v-for="(book, idx) in books" :key="idx" class="">
+                        <v-hover v-slot:default="{hover}" flat>
+                            <v-card height="300" align="center" flat outlined tile class="rounded-lg">
+                                <v-img :src="book.image" max-height="170" contain class="px-2 mt-2"></v-img>
+                                
+                                <v-card-text class="px-3 text-left">
+                                    <strong :class="hover ? 'purple--text' : 'black--text'">{{book.title}}</strong>
+                                    <div :class="hover ? 'purple--text' : 'black--text'">{{book.author}}</div>
+                                </v-card-text>
+                                <v-expand-transition>
+                                    <div v-if="hover" class="d-flex transition-fast-in-fast-out transparent v-card--reveal display-3 white--text" style="height: 100%;">
+                                        <v-btn fab small color="white" class="ml-2">
+                                            <v-icon color="black">mdi-content-copy</v-icon>
+                                        </v-btn>
+                                        <v-btn fab small color="white" class="ml-2">
+                                            <v-icon color="black">mdi-heart-outline</v-icon>
+                                        </v-btn>
+                                    </div>
+                                </v-expand-transition>
+                            </v-card>
+                        </v-hover>
+                    </v-col>
+                </v-row>
             </v-col>
         </v-row>
         </v-card>
@@ -164,32 +138,12 @@
 
 
 <script>
+import BreadCrumb from '@/components/BreadCrumb.vue'
 
 export default {
     data() {
         return {
-            items: [
-                {
-                    text: "Home",
-                    disabled: false,
-                    href: "breadcrumbs_home",
-                    color: "#67557D",
-                },
-                {
-                    text: "Genre",
-                    disabled: false,
-                    href: "breadcrumbs_genre",
-                    color: "#67557D",
-                },
-                {
-                    text: "Sci-fi",
-                    disabled: false,
-                    href: "breadcrumbs_scifi",
-                    color: "#67557D",
-                },
-            ],
-
-            books: [
+            genres: [
                 {
                     title: 'Sci-fi',
                     count: '20',
@@ -206,17 +160,74 @@ export default {
                     state: false,
                 }
             ],
-            min: 2005,
+
+            books: [
+                {
+                    sold: '-20%',
+                    image: require("../assets/Lumpu.jpg"),
+                    title: 'Lumpu',
+                    author: 'Nama Author',
+                    price: 'Rp 48,000'
+                },
+                {
+                    sold: '-30%',
+                    image: require("../assets/Nebula.jpg"),
+                    title: 'Nebula',
+                    author: 'Nama Author',
+                    price: 'Rp 48,000'
+                },
+                {
+                    sold: '-20%',
+                    image: require("../assets/Si Putih.jpg"),
+                    title: 'Si Putih',
+                    author: 'Nama Author',
+                    price: 'Rp 48,000'
+                },
+                {
+                    sold: '-20%',
+                    image: require("../assets/Anak Rantau.jpg"),
+                    title: 'Anak Rantau',
+                    author: 'Nama Author',
+                    price: 'Rp 48,000'
+                },
+                {
+                    sold: '-20%',
+                    image: require("../assets/Laut Bercerita.jpg"),
+                    title: 'Laut Bercerita',
+                    author: 'Nama Author',
+                    price: 'Rp 48,000'
+                },
+                {
+                    sold: '-20%',
+                    image: require("../assets/The Murder Of Roger Ackroyd.jpg"),
+                    title: 'The Murder Of Roger Ackroyd',
+                    author: 'Nama Author',
+                    price: 'Rp 48,000'
+                },
+                {
+                    sold: '-20%',
+                    image: require("../assets/About Me.jpg"),
+                    title: 'About Me',
+                    author: 'Nama Author',
+                    price: 'Rp 48,000'
+                },
+            ],
+            min: 1990,
             max: 2022,
-            range: [1900, 2022],
+            range: [2005, 2022],
         }
     },
+
+    components: {
+        BreadCrumb,
+    }
 }
 </script>
 
 
 <style>
 .container {
+    font-family: 'Jost';
     padding: 0px !important;
 }
 .v-breadcrumbs {
@@ -244,7 +255,7 @@ export default {
     justify-content: center;
     opacity: .5;
     position: absolute;
-    widows: 100%;
+    width: 100%;
 }
 .card1 {
     z-index: 3;
@@ -258,6 +269,7 @@ export default {
 }
 .transparent {
     background-color: transparent !important;
+    border: none !important;
     border-color: transparent !important;
 }
 .filter {
@@ -268,9 +280,6 @@ export default {
 .new {
     display: flex;
     right: 0;
-}
-.rounded-lg {
-    border-color: transparent !important;
 }
 
 </style>
