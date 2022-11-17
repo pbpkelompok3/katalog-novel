@@ -7,8 +7,7 @@
     class="navbar"
     >
         <div class="logo">
-            <v-icon class="logo-bg" size="440%" color="#EED9C4">circle</v-icon>
-            <img src="../assets/open_book_icon.png" class="logo-pic">
+            <img src="../assets/Logo Novelog.png" class="logo-pic" color="white">
             <h2 class="logo-text">NOVELOG</h2>
             <h4>Novel Catalogue</h4>
         </div>
@@ -41,20 +40,13 @@ export default {
         width: 220px;
         left: 25px;
     }
-    .logo-bg {
-        display: grid;
-        position: absolute;
-        grid-area: 1/1;
-        z-index: 1;
-        margin: -2px 0 0 -170px;
-    }
     .logo-pic {
         display:grid;
         position: absolute;
         grid-area: 1/1;
         z-index: 2;
         align-self: center;
-        width: 63px;
+        width: 60px;
         height: 55px;
         margin: -2px 0 0 -7px;
     }
@@ -67,6 +59,8 @@ export default {
         color: #fff;
         font: 28px 'Croissant One';
         margin: 3px 0 0 65px;
+        left: 10px;
+        top: 5px;
     }
     .logo h4 {
         display: grid;
@@ -75,6 +69,8 @@ export default {
         margin: 43px 0 0 66px;
         font-size: 15px;
         font-weight: 300;
+        left: 11px;
+        top: 1px;
     }
 
     .search-bar {

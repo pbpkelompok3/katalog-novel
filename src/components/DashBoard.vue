@@ -8,9 +8,8 @@
                         <v-row>
                             <v-col cols="12" sm="6" class="pl-8 pt-4">
                                 <v-btn color="black" dark class="withoutupercase" small tile>new addition !</v-btn>
-                                <h6 class="white--text mt-8 text-left">Andrea Hirata</h6>
-                                <h3 class="white--text mt-5 text-left">Laskar Pelangi</h3>
-                                <!-- <v-btn rounded color="#826c9e" dark class="withoutupercase px-8 mt-10 ml-0" elevation="5">More info</v-btn> -->
+                                <h5 class="white--text mt-15 ml-2 text-left authornames">Andrea Hirata</h5>
+                                <h3 class="white--text mt-4 ml-2 text-left">Laskar Pelangi</h3>
                             </v-col>
                             <v-col cols="12" sm="6">
                                 <v-img src="../assets/Laskar Pelangi.jpg" max-height="220" contain class="mt-1 new"></v-img>
@@ -23,8 +22,8 @@
                         <v-row>
                             <v-col cols="12" sm="6" class="pl-8 pt-4">
                                 <v-btn color="black" dark class="withoutupercase" small tile>new addition !</v-btn>
-                                <h6 class="white--text mt-8 text-left">Tere Liye</h6>
-                                <h3 class="white--text mt-8 text-left">Bumi</h3>
+                                <h5 class="white--text mt-15 ml-2 text-left authornames">Tere Liye</h5>
+                                <h3 class="white--text mt-4 ml-2 text-left">Bumi</h3>
                                 <!-- <v-btn rounded color="#8375E7" dark class="withoutupercase px-8 mt-10 ml-0" elevation="5">More Info</v-btn> -->
                             </v-col>
                             <v-col cols="12" sm="6">
@@ -43,94 +42,138 @@
 
             <!-- FILTER BAR ------------------------->
             <v-row>
-                <v-col cols="12" sm="12" class="mt-n6 pr-0">
+                <v-col cols="12" sm="4" class="mt-n6 pr-0">
                     <h2 class="filter jost">Filter</h2>
-            </v-col>
-            <v-col cols="3" class="py-0 pr-0 mt-n3">
-                <v-card>
-                    <v-toolbar flat>
-                        <strong>Genre</strong>
-                        <v-spacer></v-spacer>
-                        <v-icon color="black" class="mr-2">mdi-chevron-down</v-icon>
-                    </v-toolbar>
-                    <v-list dense class="mt-n5">
-                        <v-list-item v-for="genre in genres" :key="genre.title">
-                            <v-list-item-content>
-                                <v-list-item-title v-text="genre.title" class="text-left ml-4"></v-list-item-title>
-                            </v-list-item-content>
-                            <v-list-item-action>
-                                <v-checkbox color="primary" v-model="genre.state" class="pr-3"></v-checkbox>
-                            </v-list-item-action>
-                        </v-list-item>
-                    </v-list>
-                </v-card>
-                <v-card flat outlined tile>
-                    <v-toolbar flat>
-                        <strong>Tahun Terbit</strong>
-                        <v-spacer></v-spacer>
-                        <v-icon color="black" class="mr-2">mdi-chevron-down</v-icon>
-                    </v-toolbar>
-                    <v-toolbar flat>
-                        <v-range-slider 
-                            v-model="range"
-                            :max="max"
-                            :min="min"
-                            hide-details
-                            class="align-center"
-                        >
-                            <template v-slot:prepend>
-                                <v-text-field
-                                    :value="range[0]"
-                                    class="mt-0 pt-0"
-                                    hide-details
-                                    single-line
-                                    type="number"
-                                    style="width: 60px"
-                                    @change="$set(range, 0, $event)"
-                                ></v-text-field>
-                            </template>
-                            <template v-slot:append>
-                                <v-text-field
-                                    :value="range[1]"
-                                    class="mt-0 pt-0"
-                                    hide-details
-                                    single-line
-                                    type="number"
-                                    style="width: 60px"
-                                    @change="$set(range, 1, $event)"
-                                ></v-text-field>
-                            </template>
-                        </v-range-slider>
-                    </v-toolbar>
-                </v-card>
-            </v-col>
+                </v-col>
+                <v-col cols="12" sm="6" class="mt-n6 pr-0">
+                    <!-- <h4 class="text-right">Urutkan</h4> -->
+                    <v-select :items="sorting" label="Urutkan" dense outlined read-only class="sorting"></v-select>
+                </v-col>
+                <v-col cols="3" class="py-0 pr-0 mt-0">
+                    <v-card>
+                        <v-expansion-panels accordion multiple>
+                            <v-expansion-panel>
+                                <v-expansion-panel-header><strong>Genre</strong></v-expansion-panel-header>
+                                <v-expansion-panel-content>
+                                    <v-list dense class="mt-n5">
+                                        <v-list-item v-for="genre in genres" :key="genre.title" class="my-3">
+                                            <v-list-item-content>
+                                                <v-list-item-title v-text="genre.title" class="text-left"></v-list-item-title>
+                                            </v-list-item-content>
+                                            <v-list-item-action>
+                                                <v-checkbox color="primary" v-model="genre.state" class="pr-3"></v-checkbox>
+                                            </v-list-item-action>
+                                        </v-list-item>
+                                    </v-list>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                            <v-expansion-panel>
+                                <v-expansion-panel-header><strong>Tahun Terbit</strong></v-expansion-panel-header>
+                                <v-expansion-panel-content>
+                                    <v-toolbar flat>
+                                        <v-range-slider 
+                                            v-model="range"
+                                            :max="max"
+                                            :min="min"
+                                            hide-details
+                                            class="align-center">
+                                            <template v-slot:prepend>
+                                                <v-text-field
+                                                    :value="range[0]"
+                                                    class="mt-0 pt-0"
+                                                    hide-details
+                                                    single-line
+                                                    type="number"
+                                                    style="width: 60px"
+                                                    @change="$set(range, 0, $event)"
+                                                ></v-text-field>
+                                            </template>
+                                            <template v-slot:append>
+                                                <v-text-field
+                                                    :value="range[1]"
+                                                    class="mt-0 pt-0"
+                                                    hide-details
+                                                    single-line
+                                                    type="number"
+                                                    style="width: 60px"
+                                                    @change="$set(range, 1, $event)"
+                                                ></v-text-field>
+                                            </template>
+                                        </v-range-slider>
+                                    </v-toolbar>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                        </v-expansion-panels>
+                    </v-card>
+                    <!-- <v-card>
+                        <v-expansion-panels>
+                            <v-expansion-panel>
+                                <v-expansion-panel-header><strong>Tahun Terbit</strong></v-expansion-panel-header>
+                                <v-expansion-panel-content>
+                                    <v-toolbar flat>
+                                        <v-range-slider 
+                                            v-model="range"
+                                            :max="max"
+                                            :min="min"
+                                            hide-details
+                                            class="align-center"
+                                        >
+                                            <template v-slot:prepend>
+                                                <v-text-field
+                                                    :value="range[0]"
+                                                    class="mt-0 pt-0"
+                                                    hide-details
+                                                    single-line
+                                                    type="number"
+                                                    style="width: 60px"
+                                                    @change="$set(range, 0, $event)"
+                                                ></v-text-field>
+                                            </template>
+                                            <template v-slot:append>
+                                                <v-text-field
+                                                    :value="range[1]"
+                                                    class="mt-0 pt-0"
+                                                    hide-details
+                                                    single-line
+                                                    type="number"
+                                                    style="width: 60px"
+                                                    @change="$set(range, 1, $event)"
+                                                ></v-text-field>
+                                            </template>
+                                        </v-range-slider>
+                                    </v-toolbar>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                        </v-expansion-panels>
+                    </v-card> -->
+                </v-col>
 
-            <v-col cols="9" class="mt-n3 katalog">
-                <v-row>
-                    <v-col cols="12" sm="2" v-for="(book, idx) in books" :key="idx" class="">
-                        <v-hover v-slot:default="{hover}" flat>
-                            <v-card height="300" align="center" flat outlined tile class="rounded-lg">
-                                <v-img :src="book.image" max-height="170" contain class="px-2 mt-2"></v-img>
-                                
-                                <v-card-text class="px-3 text-left">
-                                    <strong :class="hover ? 'purple--text' : 'black--text'">{{book.title}}</strong>
-                                    <div :class="hover ? 'purple--text' : 'black--text'">{{book.author}}</div>
-                                </v-card-text>
-                                <v-expand-transition>
-                                    <div v-if="hover" class="d-flex transition-fast-in-fast-out transparent v-card--reveal display-3 white--text" style="height: 100%;">
-                                        <v-btn fab small color="white" class="ml-2">
-                                            <v-icon color="black">mdi-content-copy</v-icon>
-                                        </v-btn>
-                                        <v-btn fab small color="white" class="ml-2">
-                                            <v-icon color="black">mdi-heart-outline</v-icon>
-                                        </v-btn>
-                                    </div>
-                                </v-expand-transition>
-                            </v-card>
-                        </v-hover>
-                    </v-col>
-                </v-row>
-            </v-col>
+                <v-col cols="9" class="mt-n3 katalog">
+                    <v-row>
+                        <v-col cols="12" sm="2" v-for="(book, idx) in books" :key="idx" class="">
+                            <v-hover v-slot:default="{hover}" flat>
+                                <v-card height="300" align="center" flat outlined tile class="rounded-lg">
+                                    <v-img :src="book.image" max-height="170" contain class="px-2 mt-2"></v-img>
+                                    
+                                    <v-card-text class="px-3 text-left">
+                                        <strong :class="hover ? 'purple--text' : 'black--text'" class="books_title">{{book.title}}</strong>
+                                        <div :class="hover ? 'purple--text' : 'black--text'" class="books_title">{{book.author}}</div>
+                                    </v-card-text>
+                                    <!-- <v-expand-transition>
+                                        <div v-if="hover" class="d-flex transition-fast-in-fast-out transparent v-card--reveal display-3 white--text" style="height: 100%;">
+                                            <v-btn fab small color="white" class="ml-2">
+                                                <v-icon color="black">mdi-content-copy</v-icon>
+                                            </v-btn>
+                                            <v-btn fab small color="white" class="ml-2">
+                                                <v-icon color="black">mdi-heart-outline</v-icon>
+                                            </v-btn>
+                                        </div>
+                                    </v-expand-transition> -->
+                                </v-card>
+                            </v-hover>
+                        </v-col>
+                    </v-row>
+                </v-col>
         </v-row>
         </v-card>
     </v-container>
@@ -160,6 +203,8 @@ export default {
                     state: false,
                 }
             ],
+
+            sorting: ['Paling Relevan', 'Terbaru', 'Terlama', 'Terpopuler'],
 
             books: [
                 {
@@ -215,6 +260,7 @@ export default {
             min: 1990,
             max: 2022,
             range: [2005, 2022],
+            books_title: "hover ? 'purple--text' : 'black--text'"
         }
     },
 
@@ -230,12 +276,15 @@ export default {
     font-family: 'Jost';
     padding: 0px !important;
 }
-.v-breadcrumbs {
-    color: #67557D;
+.authornames {
+    font-weight: 300;
 }
-.v-breadcrumbs__item:link, .v-breadcrumbs__item:visited,.v-breadcrumbs__item:hover, .v-breadcrumbs__item:active {
-    font-family: 'Jost', cursive;
-    color: #67557d;
+.sorting {
+    display: flex;
+    position: absolute;
+    top: 280px;
+    right: 0;
+    width: 250px;
 }
 
 .v-btn.withoutupercase {
@@ -262,6 +311,9 @@ export default {
 }
 .card2 {
     z-index: 1;
+}
+.books_title {
+    cursor: pointer;
 }
 
 .jost {

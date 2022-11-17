@@ -3,6 +3,7 @@
     dark 
     padless
     color=#67557D
+    class="footers"
     >
         <v-card color=#67557D>
             <v-row>
@@ -85,5 +86,7 @@ export default {
 
 
 <style>
-    
+.footers {
+    z-index: 20;
+}
 </style>

@@ -47,6 +47,12 @@ export default {
 </script>
 
 
-<style lang="">
-    
+<style lang="scss">
+.v-breadcrumbs {
+    color: #67557D;
+}
+.v-breadcrumbs__item:link, .v-breadcrumbs__item:visited,.v-breadcrumbs__item:hover, .v-breadcrumbs__item:active {
+    font-family: 'Jost', cursive;
+    color: #67557d;
+}
 </style>
