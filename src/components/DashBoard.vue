@@ -211,14 +211,14 @@ export default {
                     author: 'Nama Author',
                 },
                 {
-                    image: require("../assets/Sagaras.jpeg"),
-                    title: 'Sagaras',
-                    author: 'Nama Author',
+                    image: require("../assets/Jangan Cepat Berlalu.jpg"),
+                    title: 'Jangan Cepat Berlalu',
+                    author: 'Revianaaprl',
                 },
                 {
                     image: require("../assets/Selena.jpg"),
                     title: 'Selena',
-                    author: 'Nama Author',
+                    author: 'Tere Liye',
                 },
             ],
         }
