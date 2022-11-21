@@ -25,7 +25,7 @@
             </v-col>
         </v-row>
         
-        <v-col cols="12" sm="12" class="mt-n3 px-0 pb-0">
+        <v-col cols="12" sm="12" class="mt-n3 px-0 pb-0 pageNumber">
             <v-pagination 
                 v-model="pageCurrent"
                 :length="pageLength"
@@ -123,6 +123,12 @@ export default {
 </script>
 
 
-<style lang="">
-    
+<style lang="scss">
+.pageNumber {
+    position: absolute;
+    padding-top: 30px;
+    left: 0%;
+
+}    
+
 </style>
