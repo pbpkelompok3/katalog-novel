@@ -47,5 +47,19 @@ export default {
 
 
 <style lang="scss">
-    
+.loginButon {
+    display: flex;
+    position: absolute;
+    margin-top: 20px;
+    left: 170px;
+    border-radius: 20px;
+    width: 100px;
+}
+.loginText {
+    text-transform: capitalize;
+    color: #67557D;
+    font-family: 'Jost';
+    font-weight: 600;
+    font-size: 17px;
+}
 </style>

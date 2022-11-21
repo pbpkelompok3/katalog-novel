@@ -126,7 +126,7 @@ export default {
 <style lang="scss">
 .pageNumber {
     position: absolute;
-    padding-top: 30px;
+    padding-top: 50px;
     left: 0%;
 
 }    

@@ -1,5 +1,6 @@
 <template>
     <v-app-bar 
+    hide-overlay
     app color="#67557D"
     elevation="7"
     dark
@@ -98,6 +99,6 @@ export default {
         cursor: pointer;
     }
     .navbar {
-        z-index: 10;
+        z-index: 50;
     }
 </style>

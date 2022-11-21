@@ -15,7 +15,19 @@
                 <v-col cols="12" sm="4" class="mt-n6 pr-0" align="left">
                     <h2 class="ml-2 mt-1 jost">Filter</h2>
                 </v-col>
-                <v-col cols="12" sm="8" class="mt-n6 mx-0" align="right">
+                <v-col cols="12" sm="5" class="mt-n6 mx-0" align="right">
+                    <v-btn v-if="admin" class="white--text addBook" color="#67557D" v-on:click="overlayAddBook = !overlayAddBook">Tambah Novel</v-btn>
+                </v-col>
+
+                <template v-if="overlayAddBook">
+                    <v-overlay :z-index="101" :value="overlayAddBook">
+                        <div class="addBookOverlay" v-click-outside="onClickOutside">
+                            <AddBook />
+                        </div>
+                    </v-overlay>
+                </template>
+
+                <v-col cols="12" sm="3" class="mt-n6 mx-0" align="right">
                     <v-select :items="sorting" label="Urutkan" dense outlined read-only class="mt-0 sorting"></v-select>
                 </v-col>
                 <v-col cols="3" class="py-0 pr-0 mt-0">
@@ -90,15 +102,23 @@
 import BreadCrumb from '@/components/BreadCrumb.vue'
 import NewAddition from '@/components/NewAddition.vue'
 import CataLog from '@/components/CataLog.vue'
+import AddBook from '@/components/AddBook.vue'
 
 export default {
     components: {
         BreadCrumb,
         NewAddition,
         CataLog,
+        AddBook,
     },
     data() {
         return {
+            min: 1990,
+            max: 2022,
+            range: [2005, 2022],
+            sorting: ['Paling Relevan', 'Terbaru', 'Terlama', 'Terpopuler'],
+            admin: true,
+            overlayAddBook: false,
             genres: [
                 {
                     title: 'Sci-fi',
@@ -116,12 +136,13 @@ export default {
                     state: false,
                 }
             ],
-            min: 1990,
-            max: 2022,
-            range: [2005, 2022],
-            sorting: ['Paling Relevan', 'Terbaru', 'Terlama', 'Terpopuler'],
         }
     },
+    methods: {
+        onClickOutside() {
+            this.overlayAddBook = false
+        },
+    }
 }
 </script>
 
@@ -133,6 +154,19 @@ export default {
 }
 .authornames {
     font-weight: 300;
+}
+
+.addBook {
+    border-radius: 10px;
+    font-weight: 400;
+}
+
+.addBookOverlay {
+    width: 900px;
+    height: 450px;
+    bottom: 0;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .sorting {
