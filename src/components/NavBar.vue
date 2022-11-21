@@ -6,7 +6,7 @@
     height="80px"
     class="navbar"
     >
-        <div class="logo">
+        <div class="logo pointer">
             <img src="../assets/Logo Novelog.png" class="logo-pic" color="white">
             <h2 class="logo-text">NOVELOG</h2>
             <h4>Novel Catalogue</h4>

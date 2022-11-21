@@ -7,7 +7,7 @@
             <v-col cols="12" sm="12">
                 <v-breadcrumbs :items="breadcrumb_items" class="text-left mt-n7 ml-10" dark>
                     <template v-slot:divider>
-                        <v-icon color="#67557D">mdi-chevron-right</v-icon>
+                        <v-icon color="black">mdi-chevron-right</v-icon>
                     </template>
                 </v-breadcrumbs>
             </v-col>
