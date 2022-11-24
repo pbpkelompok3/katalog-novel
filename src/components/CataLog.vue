@@ -43,6 +43,7 @@
 
 
 <script>
+
 export default {
     data() {
         return {
@@ -54,6 +55,7 @@ export default {
                     image: require("../assets/Lumpu.jpg"),
                     title: 'Lumpu',
                     author: 'Nama Author',
+                    href: '/buku/bumi'
                 },
                 {
                     image: require("../assets/Nebula.jpg"),
@@ -115,10 +117,20 @@ export default {
                     title: 'Selena',
                     author: 'Tere Liye',
                 },
+                {
+                    image: require("../assets/Bumi.jpg"),
+                    title: 'Bumi',
+                    author: 'Tere Liye',
+                },
             ],
 
         }
-    }    
+    },
+    methods: {
+        gotToBook() {
+            location.href = '/buku/bumi'
+        }
+    }
 }
 </script>
 

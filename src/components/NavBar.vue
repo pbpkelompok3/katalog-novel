@@ -1,13 +1,13 @@
 <template>
     <v-app-bar 
-    hide-overlay
     app color="#67557D"
     elevation="7"
     dark
     height="80px"
     class="navbar"
+    hide-overlay
     >
-        <div class="logo pointer">
+        <div class="logo pointer" v-on:click="goToHome">
             <img src="../assets/Logo Novelog.png" class="logo-pic" color="white">
             <h2 class="logo-text">NOVELOG</h2>
             <h4>Novel Catalogue</h4>
@@ -25,12 +25,16 @@
 
 <script>
 export default {
-    name: 'NavBar',
     data() {
         return {
 
         }
     },
+    methods: {
+        goToHome() {
+            location.href='../'
+        }
+    }
 }
 </script>
 
@@ -97,8 +101,5 @@ export default {
     }
     .search-pic:hover {
         cursor: pointer;
-    }
-    .navbar {
-        z-index: 50;
     }
 </style>

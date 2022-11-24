@@ -16,16 +16,16 @@
                     <h2 class="ml-2 mt-1 jost">Filter</h2>
                 </v-col>
                 <v-col cols="12" sm="5" class="mt-n6 mx-0" align="right">
-                    <v-btn v-if="admin" class="white--text addBook" color="#67557D" v-on:click="overlayAddBook = !overlayAddBook">Tambah Novel</v-btn>
+                    <v-btn v-if="admin" class="white--text addBook" color="#67557D" v-on:click="goToAddBook">Tambah Novel</v-btn>
                 </v-col>
 
-                <template v-if="overlayAddBook">
-                    <v-overlay :z-index="101" :value="overlayAddBook">
-                        <div class="addBookOverlay" v-click-outside="onClickOutside">
-                            <AddBook />
-                        </div>
-                    </v-overlay>
-                </template>
+
+                <v-overlay :z-index="120" :value="overlayAddBook">
+                    <div class="addBookOverlay" v-click-outside="onClickOutside">
+                        <AddBook />
+                    </div>
+                </v-overlay>
+                
 
                 <v-col cols="12" sm="3" class="mt-n6 mx-0" align="right">
                     <v-select :items="sorting" label="Urutkan" dense outlined read-only class="mt-0 sorting"></v-select>
@@ -142,6 +142,9 @@ export default {
         onClickOutside() {
             this.overlayAddBook = false
         },
+        goToAddBook() {
+            location.href = '../add-book'
+        }
     }
 }
 </script>
@@ -164,7 +167,6 @@ export default {
 .addBookOverlay {
     width: 900px;
     height: 450px;
-    bottom: 0;
     background-color: white;
     border-radius: 10px;
 }

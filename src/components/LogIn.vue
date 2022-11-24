@@ -62,4 +62,11 @@ export default {
     font-weight: 600;
     font-size: 17px;
 }
+.overlayHeader {
+    font-family: 'Jost';
+    font-weight: 600;
+}
+.formContainer {
+    width: 300px;
+}
 </style>

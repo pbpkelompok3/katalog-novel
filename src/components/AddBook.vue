@@ -3,19 +3,31 @@
         <v-form ref="form" v-model="valid" light lazy-validation @submit.prevent="submitAddBook">
             <v-container class="overlayAddBook">
                 <h2 class="headerAddBook pt-8 pb-5">Tambah Buku</h2>
-                <v-col cols="12" sm="3">
-                    <v-row>
-                        <v-text-field v-model="bla" color="#67557D" type="" label="test1" light outlined required class="" ></v-text-field>
-                    </v-row>
-                    <v-row>
-                        <v-text-field v-model="bla" color="#67557D" type="" label="test1" light outlined required class="" ></v-text-field>
-                    </v-row>
-                </v-col>
-                <v-col>
-                    <v-row cols="12" sm="8">
-                        <v-textarea v-model="bla" color="#67557D" type="" label="test1" light outlined required class="" ></v-textarea>
-                    </v-row>
-                </v-col>
+                <v-row>
+                    <v-col cols="12" sm="3" class="">
+                        <v-row >
+                            <v-text-field v-model="judul" color="#67557D" type="" label="Judul" light outlined required class="" ></v-text-field>
+                        </v-row>
+                        <v-row>
+                            <v-text-field v-model="penulis" color="#67557D" type="" label="Penulis" light outlined required class="" ></v-text-field>
+                        </v-row>
+                        <v-row>
+                            <v-text-field v-model="penerbit" color="#67557D" type="" label="Penerbit" light outlined required class="" ></v-text-field>
+                        </v-row>
+                        <v-row>
+                            <v-text-field v-model="tahunTerbit" color="#67557D" type="" label="Tahun Terbit" light outlined required class="" ></v-text-field>
+                        </v-row>
+                        <v-row>
+                            <v-text-field v-model="halaman" color="#67557D" type="" label="Halaman" light outlined required class="" ></v-text-field>
+                        </v-row>
+                    </v-col>
+                    <v-col class="mx-5">
+                        <v-row cols="12" sm="8">
+                            <v-textarea v-model="sinopsis" color="#67557D" type="" label="Sinopsis" light outlined required class="" ></v-textarea>
+                        </v-row>
+                    </v-col>
+                </v-row>
+                
                 <!-- <v-row>
                     <v-btn type="submit" class="loginButon" color="white">
                         <div class="loginText">Masuk</div>
@@ -53,10 +65,9 @@ export default {
 
 <style lang="scss">
 .overlayAddBook {
-    width: 800px;
     height: 450px;
+    width: 800px;
 }
-
 .loginButon {
     display: flex;
     position: absolute;
@@ -78,5 +89,6 @@ export default {
 .purples-text {
     color: #67557D;
 }
+
 
 </style>

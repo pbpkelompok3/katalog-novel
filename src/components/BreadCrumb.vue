@@ -36,7 +36,7 @@ export default {
                 {
                     text: "Bumi",
                     disabled: false,
-                    href: "../details",
+                    href: "../buku/bumi",
                     color: "#67557D",
                 },
                 

@@ -136,12 +136,7 @@ export default {
     background-color: #67557D;
     border-radius: 10px;
 }
-.overlayHeader {
-    font-family: 'Jost';
-    font-weight: 600;
-}
-.formContainer {
-    width: 300px;
-}
+
+
 
 </style>
