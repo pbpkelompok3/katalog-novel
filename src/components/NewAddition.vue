@@ -6,11 +6,11 @@
                     <v-row>
                         <v-col cols="12" sm="6" class="pl-8 pt-4">
                             <v-btn color="black" dark class="withoutupercase" small tile>new addition !</v-btn>
-                            <h4 class="white--text mt-15 ml-2 text-left authornames">{{books[books.length - 1].author}}</h4>
-                            <h3 class="white--text mt-4 ml-2 text-left">{{books[books.length - 1].title}}</h3>
+                            <h4 class="white--text mt-15 ml-2 text-left authornames pointer">{{books[books.length - 1].author}}</h4>
+                            <h3 class="white--text mt-4 ml-2 text-left pointer">{{books[books.length - 1].title}}</h3>
                         </v-col>
                         <v-col cols="12" sm="6">
-                            <v-img :src="books[books.length - 1].image" max-height="210" contain class="mt-1 new"></v-img>
+                            <v-img :src="books[books.length - 1].image" max-height="210" contain class="mt-1 new pointer"></v-img>
                         </v-col>
                     </v-row>
                 </v-card>
@@ -20,12 +20,12 @@
                     <v-row>
                         <v-col cols="12" sm="6" class="pl-8 pt-4">
                             <v-btn color="black" dark class="withoutupercase" small tile>new addition !</v-btn>
-                            <h4 class="white--text mt-15 ml-2 text-left authornames">{{books[books.length - 2].author}}</h4>
-                            <h3 class="white--text mt-4 ml-2 text-left">{{books[books.length - 2].title}}</h3>
+                            <h4 class="white--text mt-15 ml-2 text-left authornames pointer">{{books[books.length - 2].author}}</h4>
+                            <h3 class="white--text mt-4 ml-2 text-left pointer">{{books[books.length - 2].title}}</h3>
                             <!-- <v-btn rounded color="#8375E7" dark class="withoutupercase px-8 mt-10 ml-0" elevation="5">More Info</v-btn> -->
                         </v-col>
                         <v-col cols="12" sm="6">
-                            <v-img :src="books[books.length - 2].image" max-height="210" contain class="mt-1"></v-img>
+                            <v-img :src="books[books.length - 2].image" max-height="210" contain class="mt-1 pointer"></v-img>
                         </v-col>
                     </v-row>
                 </v-card>
